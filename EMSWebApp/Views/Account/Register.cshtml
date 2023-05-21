@@ -1,0 +1,45 @@
+﻿@model EMSWebApp.ViewModel.RegisterUserViewModel
+
+<div class="background-overlay"></div>
+<h5 id="RegisterH5">REGISTER ACCOUNT</h5>
+
+<div class="container" id="RegisterContainer">
+    <form asp-controller="Account" asp-action="Register" method="post">
+        <div>
+            <label>First Name</label> <span class="text-danger" asp-validation-for="FirstName"></span>
+            <input placeholder="Enter your first name..." class="form-control" asp-for="FirstName" />
+
+        </div>
+        <div>
+            <label>Last Name</label> <span class="text-danger" asp-validation-for="LastName"></span>
+            <input placeholder="Enter your last name..." class="form-control" asp-for="LastName" />
+
+        </div>
+        <div>
+            <label>Email Address</label> <span class="text-danger" asp-validation-for="Email"></span>
+            <input placeholder="Enter your email address..." class="form-control" asp-for="Email" />
+
+        </div>
+        <div hidden>
+            <label asp-for="UserName"></label> <span class="text-danger" asp-validation-for="UserName"></span>
+            <input placeholder="Enter your email..." class="form-control" asp-for="UserName" />
+
+        </div>
+
+        <div>
+            <label asp-for="Password"></label> <span class="text-danger" asp-validation-for="Password"></span>
+            <input placeholder="Enter your password..." class="form-control" asp-for="Password" />
+
+        </div>
+        <div>
+            <label>Confirm Password</label> <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+            <input placeholder="Confirm your password..." class="form-control" asp-for="ConfirmPassword" />
+
+        </div>
+
+        <button class="btn btn-dark" style="width: 100%; margin-top: 5px;" type="submit">Register</button>
+        <a class="btn btn-danger" style="width: 100%; margin-top: 5px;" asp-action="GetAllContacts">CANCEL</a>
+        <p id="RegisterP">Already have an account? Click <a asp-action="Login">here</a>!</p>
+
+    </form>
+</div>

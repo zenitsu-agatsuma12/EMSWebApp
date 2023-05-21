@@ -1,0 +1,29 @@
+﻿@model EMSWebApp.ViewModel.LoginUserViewModel
+
+<div class="background-overlay"></div>
+<h5 id="LoginH5">LOGIN TO YOUR ACCOUNT</h5>
+
+<div class="container" id="LoginContainer">
+    <form asp-controller="Account" asp-action="Login" method="post">
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="text-danger">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            </div>
+        }
+        <div>
+            <label>Username</label> <span class="text-danger" asp-validation-for="UserName"></span>
+            <input placeholder="Enter your username..." class="form-control" asp-for="UserName" />
+
+        </div>
+
+        <div>
+            <label asp-for="Password"></label> <span class="text-danger" asp-validation-for="Password"></span>
+            <input placeholder="Enter your password..." class="form-control" asp-for="Password" />
+
+        </div>
+        <button class="btn btn-dark" style="width: 100%; margin-top: 5px;" type="submit">LOGIN</button>
+        <a class="btn btn-danger" style="width: 100%; margin-top: 5px;" asp-action="Index" asp-controller="Home">CANCEL</a>
+        <p id="RegisterP">Don't have an account yet? Register <a asp-action="Register">here</a>!</p>
+    </form>
+</div>

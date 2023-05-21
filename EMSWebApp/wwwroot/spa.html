@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Single Page Application</title>
+</head>
+<body>
+    <center>Login Page</center>
+    <div align="center">
+        <form style="width: 500px;">
+            <div class="container">
+                <label>User name:</label>
+                <input type="text" required />
+                <label>Password:</label>
+                <input type="password" required />
+                <button type="button" onclick="btnLogin()">Login</button>
+            </div>
+        </form>
+    </div>
+    <!--List of employees-->
+    <div id="listallemployees">
+
+    </div>
+
+    <script>
+
+        function btnLogin() {
+            // rest api's and then start writing the functionality
+
+            // httpclient = js http client  -> ajax which can be used for http client
+
+            var httpClient = new XMLHttpRequest();
+            httpClient.onreadystatechange = function () {
+                console.log(this.readyState);
+                console.log(this.responseText);
+                if (this.readyState == 4 && this.status == 200 ) {
+                    document.getElementById("listallemployees").innerHTML = this.responseText;
+                    console.log(this.responseText);
+                }
+                else {
+                    console.log("No Response");
+                }
+            }
+            httpClient.open("POST", "http://localhost:5176/Login", true);
+            httpClient.setRequestHeader("ApiKey", "RANDomValuetoDenoteAPIKeyWithNumbers131235");
+            httpClient.setRequestHeader("Content-type", "application/json")
+            httpClient.send('{"userName": "user@example.com","password": "stringA@1"}'); 
+        }
+    </script>
+</body>
+</html>

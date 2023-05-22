@@ -1,9 +1,71 @@
-﻿@model EMSWebApp.ViewModel.LoginUserViewModel
+﻿<style>
+    .login-container {
+        max-width: 380px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-<div class="background-overlay"></div>
-<h5 id="LoginH5">LOGIN TO YOUR ACCOUNT</h5>
+        .login-container h5 {
+            margin-top: 0;
+            font-size: 24px;
+            text-align: center;
+        }
 
-<div class="container" id="LoginContainer">
+        .login-container label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .login-container button[type="submit"] {
+            background-color: #1877f2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+            .login-container button[type="submit"]:hover {
+                background-color: #0d6efd;
+            }
+
+        .login-container a.cancel-button {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #888;
+        }
+
+            .login-container a.cancel-button:hover {
+                color: #555;
+            }
+
+        .login-container p {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+        }
+</style>
+
+<div class="login-container">
+    <h5>ENTER YOUR ACCOUNT</h5>
+
     <form asp-controller="Account" asp-action="Login" method="post">
         @if (!ViewData.ModelState.IsValid)
         {
@@ -12,18 +74,17 @@
             </div>
         }
         <div>
-            <label>Username</label> <span class="text-danger" asp-validation-for="UserName"></span>
-            <input placeholder="Enter your username..." class="form-control" asp-for="UserName" />
-
+            <label for="username">Email Address</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username..." required>
         </div>
 
         <div>
-            <label asp-for="Password"></label> <span class="text-danger" asp-validation-for="Password"></span>
-            <input placeholder="Enter your password..." class="form-control" asp-for="Password" />
-
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password..." required>
         </div>
-        <button class="btn btn-dark" style="width: 100%; margin-top: 5px;" type="submit">LOGIN</button>
-        <a class="btn btn-danger" style="width: 100%; margin-top: 5px;" asp-action="Index" asp-controller="Home">CANCEL</a>
-        <p id="RegisterP">Don't have an account yet? Register <a asp-action="Register">here</a>!</p>
+
+        <button type="submit">Log In</button>
+        <a class="cancel-button" href="/Home/Index">Cancel</a>
+        <p>Don't have an account? <a href="/Account/Register">Sign Up</a></p>
     </form>
 </div>

@@ -7,9 +7,9 @@
 <h1>GetEmployees</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table table-striped table-hover">
     <thead>
         <tr>
             <th>
@@ -19,10 +19,10 @@
                 @Html.DisplayNameFor(model => model.First_Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Last_Name)
+                @Html.DisplayNameFor(model => model.Middle_Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Middle_Name)
+                @Html.DisplayNameFor(model => model.Last_Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Address)
@@ -43,10 +43,10 @@
                 @Html.DisplayFor(modelItem => item.First_Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Last_Name)
+                @Html.DisplayFor(modelItem => item.Middle_Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Middle_Name)
+                @Html.DisplayFor(modelItem => item.Last_Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Address)
@@ -55,9 +55,9 @@
                 @Html.DisplayFor(modelItem => item.DOB)
             </td>
             <td>
-                    <a asp-controller="Employee" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                    <a asp-controller="Employee" asp-action="Update" asp-route-id="@item.Id">Update</a>
-                    <a asp-controller="Employee" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a class="btn btn-info" asp-controller="Employee" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a class="btn btn-warning" asp-controller="Employee" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                <a class="btn btn-danger" asp-controller="Employee" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }
